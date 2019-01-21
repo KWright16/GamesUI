@@ -1,0 +1,53 @@
+﻿.App {
+    text-align: center;
+    background-color: #282c34;
+    display: grid;
+    grid-template: 2fr 1fr 10fr / 1fr;
+    height: 100vh;
+    grid-template-areas: "header" "nav" "main";
+}
+
+header {
+    grid-area: header;
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.Nav {
+    grid-area: nav;
+}
+
+.Main {
+    grid-area: main;
+}
+.mainPages {
+    background-color: white;
+    min-height: 80vh;
+}
+.mainPages header {
+    max-height: 20vh;
+}
+
+
+/*------lobby--------*/
+.MainLobby {
+    max-height: 25vh;
+}
+.enterButton {
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 1em;
+    border-radius: 5px;
+    background-color: #42454A;
+}
+.enterButton:hover {
+    color: grey;
+    transform: scale(1.1);
+    border: 1px solid grey;
+}
