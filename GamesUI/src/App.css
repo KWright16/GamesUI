@@ -9,7 +9,6 @@
 
 header {
     grid-area: header;
-    min-height: 75vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,23 +19,53 @@ header {
 
 .Nav {
     grid-area: nav;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 2px solid #DF482A;
+}
+
+.Nav a {
+    text-decoration: none;
+    color: white; 
+    width: 50%;
+    padding: 0.75em 0 0.75em 0;
+    font-size: 1.4em;
+    font-weight: 700;
+}
+
+.Nav a:hover {
+        background-color: #42454A;
+        color: #f8512f;
 }
 
 .Main {
-    grid-area: main;
-}
-.mainPages {
+    grid-area: main;    
     background-color: white;
-    min-height: 80vh;
-}
-.mainPages header {
-    max-height: 20vh;
 }
 
+input {
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 0.4em 1em;
+    box-sizing: border-box;
+    color: grey;
+}
 
 /*------lobby--------*/
-.MainLobby {
-    max-height: 25vh;
+.App-Lobby {
+    text-align: center;
+    background-color: #282c34;
+    display: grid;
+    grid-template: 7fr 2fr / 1fr;
+    height: 100vh;
+    grid-template-areas: "header" "main";
+}
+.No-Nav {
+    display: none;
+}
+
+.Main-Lobby {
+    grid-area: main;
 }
 .enterButton {
     color: white;
@@ -50,4 +79,111 @@ header {
     color: grey;
     transform: scale(1.1);
     border: 1px solid grey;
+}
+
+/*------------------------Home--------------------------*/
+
+.home ul {
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    margin: 1em 3em 1em 3em;
+}
+
+.home li {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: left;
+    padding: 1em 0 1em 0;
+    border-bottom: dashed #DF482A 2px;
+}
+
+.home a {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    width: 100%;
+    transition: all 0.2s ease-in-out;
+}
+.home a:hover {
+    color: #42454A;
+    transform: scale(1.02);
+}
+.home p {
+    width: 50%;
+}
+
+/*-----------------------Game--------------------------*/
+
+button {
+    background-color: #42454A;
+    padding: 0.4em 2em 0.4em 2em;
+    border-radius: 8px;
+    color: white;
+    border-style: none;
+    margin: 0.5em 0 0.5em 0;
+    width: 10em; 
+}
+button:hover {
+    background-color: #282c34;
+    color: #f8512f;
+}
+.game {
+    margin: 2em 1em 0em 1em;
+    display: grid;
+    grid-template: 1fr 4fr / 5fr 1fr;
+    grid-template-areas: "heading heading" "text controls";
+}
+.text {
+    grid-area: text;
+    margin: 2em 4em 0 4em;
+}
+.controls {
+    grid-area: controls;
+    padding-top: 1em;
+    border: 2px #DF482A solid;
+    border-radius: 4px;
+}
+.game h2 {
+    grid-area: heading;
+    border-bottom: 2px dashed #DF482A;
+    padding-bottom: 1em;
+    margin-top: 0;
+}
+.game input {
+    width: 10em;
+    margin: 0.5em 0 0.5em 0;
+}
+.game p {
+    text-align: left;
+}
+
+/*-------------------------AddGame------------------------*/
+
+.addGame form {
+    margin: 1em 10em;
+    border: 2px solid lightgrey;
+    padding: 2em 4em;
+    border-radius: 4px;
+}
+.addGame input {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+}
+.addGame label {
+    width: 100%;
+    float: left;
+    text-align: left;
+}
+.addGame textarea {
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 0.4em 1em;
+    box-sizing: border-box;
+    color: grey;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }

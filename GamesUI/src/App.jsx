@@ -1,6 +1,7 @@
 ﻿import React, { Component } from 'react';
 import './App.css';
-import { Router } from "@reach/router";
+import './spinner.css'
+import { Router, Link } from "@reach/router";
 import Home from './components/Home';
 import Game from './components/Game';
 import AddGame from './components/AddGame';
@@ -11,22 +12,28 @@ class App extends Component {
         lobby: true
     }
     render() {
+        const { lobby } = this.state;
         return (
-            <div className="App">
+            <div className={lobby? "App-Lobby": "App"}>
                 <header>
                     <h1>The Games Archive</h1>
                 </header>
-                <nav className="Nav">
+                <nav className={lobby ? "No-Nav" : "Nav"}>
+                    <Link to="/games">View Games</Link>
+                    <Link to="/games/new_game">Add a Game</Link>
                 </nav>
-                <Router className="main">
+                <Router className={lobby ? "Main-Lobby" : "Main"}>
                     <Lobby path="/" />
-                    <Home path="/games" />
-                    <Game path="/games/:gameId" />
-                    <AddGame path="/games/new_game" />
+                    <Home exitLobby={this.exitLobby} path="/games" />
+                    <Game exitLobby={this.exitLobby} path="/games/:gameId" />
+                    <AddGame exitLobby={this.exitLobby} path="/games/new_game" />
                 </Router>
             </div>
         );
     }
+    exitLobby = () => {
+        this.setState({lobby: false})
+    }    
 }
 
 export default App;

@@ -5,20 +5,21 @@ import * as api from "../api";
 class Home extends Component {
     state = {
         games: [],
-        lobby: false
+        isLoading: true
     }
 
     render() {
-        const { games } = this.state
+        const { games, isLoading } = this.state;
+        if (isLoading) return <div className="loader">Loading...</div>;
         return (
-            <div className="mainPages">
+            <div className="home">
                 <ul>
                     {games.map(game => {
                         return (
                             <li key={game.id}>
-                                <Link to={`/games/${game.id}`}>{game.name}</Link>
-                                <p>{`${game.releaseDate.substr(8, 2)}${game.releaseDate.substr(4, 4)}${game.releaseDate.substr(0, 4)}`}</p>
-                                <p>{game.rating}</p>
+                                <Link to={`/games/${game.id}`}>{game.name}</Link>                                
+                                <p>{`Release Date: ${game.releaseDate.substr(8, 2)}${game.releaseDate.substr(4, 4)}${game.releaseDate.substr(0, 4)}`}</p>
+                                <p>{`User Rating: ${game.rating}`}</p>
                             </li>
                         );
                     })}
@@ -27,10 +28,12 @@ class Home extends Component {
         );
     }
     componentDidMount() {
+        const { exitLobby } = this.props;
+        exitLobby();
         api
             .getGames()
             .then(( games ) => {               
-                this.setState({games})
+                this.setState({games, isLoading: false})
             })
             .catch(err => {
                 console.log(err)
