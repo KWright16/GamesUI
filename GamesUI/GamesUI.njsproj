@@ -60,6 +60,9 @@
     <Compile Include="src\components\AddGame.jsx">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="src\components\BadRequest.jsx">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="src\components\Game.jsx">
       <SubType>Code</SubType>
     </Compile>
@@ -67,6 +70,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="src\components\Lobby.jsx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\components\NotFound.jsx">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="src\index.js">

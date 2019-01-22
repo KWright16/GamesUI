@@ -1,5 +1,5 @@
 ﻿import React, { Component } from "react";
-import { Link } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 import * as api from "../api";
 
 class Home extends Component {
@@ -36,7 +36,15 @@ class Home extends Component {
                 this.setState({games, isLoading: false})
             })
             .catch(err => {
-                console.log(err)
+                const { uri } = this.props;
+                navigate("/error", {
+                    replace: true,
+                    state: {
+                        code: err.response.status,
+                        message: err.response.statusText,
+                        from: uri
+                    }
+                });
             });
     }
 

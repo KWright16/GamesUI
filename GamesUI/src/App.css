@@ -141,7 +141,7 @@ button:hover {
 }
 .controls {
     grid-area: controls;
-    padding-top: 1em;
+    padding: 1em;
     border: 2px #DF482A solid;
     border-radius: 4px;
 }
@@ -186,4 +186,7 @@ button:hover {
     box-sizing: border-box;
     color: grey;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+.emptyField {
+    color: red;
 }

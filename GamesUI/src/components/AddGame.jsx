@@ -6,14 +6,21 @@ class AddGame extends Component {
         name: "",
         releaseDate: "",
         rating: 0,
-        description: ""
+        description: "",
+        posted: false,
+        game: {},
+        empty: null,
+        error: null
     }
 
     render() {
-        const { name, releaseDate, rating, description } = this.state;
+        const { name, releaseDate, rating, description, posted, game, empty, error } = this.state;   
+        const message = posted ? `You succesfully added ${game.name}` : empty ? "Please complete all fields" : "";
+        if (error) return (<p>Something went wrong</p>);
         return (
             <div className="addGame">
                 <h2>Add a Game</h2>
+                <p className={empty? "emptyField": ""}>{message}</p>
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor="name">Game Name: </label>
                     <br />
@@ -76,6 +83,11 @@ class AddGame extends Component {
         event.preventDefault();
         const { name, releaseDate, rating, description } = this.state;
         const date = `${releaseDate}T00:00: 00`;
+        const empty = this.validate(name, releaseDate, rating, description);
+        if (empty.name || empty.releaseDate || empty.rating || empty.description) {
+            this.setState({ empty, posted: false })
+        } else {
+
         const newGame = {
             name,
             date,
@@ -84,12 +96,29 @@ class AddGame extends Component {
         };
         api.addGame(newGame)
             .then((game) => {
-
+                this.setState({
+                    posted: true,
+                    game,
+                    name: "",
+                    description: "",
+                    releaseDate: "",
+                    rating: 0,
+                    empty: null
+                })
             })
-            .catch((err) => {
-                console.log(err);
+            .catch((error) => {
+                this.setState({error})
             })
+        }
     }
+    validate = (name, releaseDate, rating, description) => {
+        return {
+            name: name.length === 0,
+            releaseDate: releaseDate.length === 0,
+            rating: rating <= 0 || rating > 10,
+            description: description.length === 0
+        };
+    };
 }
 
 export default AddGame;

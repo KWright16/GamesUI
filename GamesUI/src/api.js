@@ -20,7 +20,6 @@ export const addGame = async (game) => {
 };
 
 export const deleteGame = async (game_id) => {
-    console.log(game_id, '<<<<<<')
     const { data } = await axios.delete(`${base_url}/games/${game_id}`);
     return data;
 };
